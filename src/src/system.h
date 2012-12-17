@@ -2,9 +2,21 @@
 #define SYSTEM_H
 
 
+// Just adding some standard header files
 #include <string>
+#include <vector>
+#include <map>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+#include <cstring>
+// These are platform includes
 #include <Windows.h>
 #include "Direct3D.h"
+#include "CustomVertex.h"
+#include "Entity.h"
+#include "Texture.h"
 
 /*
 	This is a wrapper for the window, direct3d9, and directinput8. I debating for sound fx I should use OpenAL or DirectSound just to

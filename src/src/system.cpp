@@ -16,6 +16,8 @@ static HRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
 }
 
 void System::init(std::string cap, int width, int height, HINSTANCE hin, int cmd) {
+	srand(time(0));
+	
 	this->cap = cap;
 	this->mWidth = width;
 	this->mHeight = height;
