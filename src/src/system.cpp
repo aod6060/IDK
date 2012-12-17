@@ -24,7 +24,9 @@ void System::init(std::string cap, int width, int height, HINSTANCE hin, int cmd
 
 	this->init_window();
 
-	this->init_demo();
+	this->d3d.init(*this);
+
+	this->init_game();
 }
 
 void System::loop() {
@@ -40,9 +42,9 @@ void System::loop() {
 			DispatchMessage(&msg);
 		} else {
 
-			this->update_demo(0.0f);
+			this->update_game(0.0f);
 
-			this->render_demo();
+			this->render_game();
 		}
 	}
 
@@ -50,7 +52,10 @@ void System::loop() {
 }
 
 void System::release() {
-	this->release_demo();
+	this->release_game();
+
+	this->d3d.release();
+
 }
 
 void System::init_window() {

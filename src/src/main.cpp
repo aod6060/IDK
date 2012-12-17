@@ -1,15 +1,15 @@
-#include "system.h"
+#include "Game.h"
+
 
 int WINAPI WinMain(HINSTANCE hin, HINSTANCE hpin, LPSTR str, int cmd) {
 
+	Game game;
 
-	System sys;
+	game.init("IDK Game", 640, 480, hin, cmd);
 
-	sys.init("Game Window", 640, 480, hin, cmd);
+	game.loop();
 
-	sys.loop();
-
-	sys.release();
+	game.release();
 
 	return 0;
 }
