@@ -3,8 +3,22 @@
 
 #include "system.h"
 
+struct Vertex {
+	D3DXVECTOR3 xyz;
+
+	Vertex() : xyz(0, 0, 0) {}
+
+	Vertex(D3DXVECTOR3 xyz) : xyz(xyz) {}
+
+};
+
+
+#define VFVF (D3DFVF_XYZ)
 
 class Game : public System {
+
+	IDirect3DVertexBuffer9* vb;
+
 
 public:
 

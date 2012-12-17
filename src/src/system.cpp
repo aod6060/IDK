@@ -35,6 +35,14 @@ void System::loop() {
 
 	ZeroMemory(&msg, sizeof(MSG));
 
+
+	__int64 cps = 0;
+	QueryPerformanceFrequency((LARGE_INTEGER*)&cps);
+	float spc = 1.0f / (float)cps;
+
+	__int64 pts = 0;
+	QueryPerformanceCounter((LARGE_INTEGER*)&pts);
+
 	while(msg.message != WM_QUIT) {
 		
 		if(PeekMessage(&msg, 0, 0, 0, PM_REMOVE)) {
@@ -42,9 +50,16 @@ void System::loop() {
 			DispatchMessage(&msg);
 		} else {
 
-			this->update_game(0.0f);
+			__int64 cts = 0;
+			QueryPerformanceCounter((LARGE_INTEGER*)&cts);
+			float dt = (cts - pts) * spc;
+
+			this->update_game(dt);
 
 			this->render_game();
+
+
+			pts = cts;
 		}
 	}
 
