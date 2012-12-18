@@ -16,10 +16,12 @@ void Game::init_game() {
 	d3d.Device()->SetRenderState(D3DRS_LIGHTING, false);
 	d3d.Device()->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
-	en.init(d3d);
+	p.init(d3d);
 
-	en.Pos(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
-	en.Size(D3DXVECTOR3(32.0f, 48.0f, 0.0f));
+	p.Pos(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
+	p.Size(D3DXVECTOR3(32.0f, 48.0f, 0.0f));
+
+	p.Input(&di);
 
 	t.init(d3d, "data/player.jpg");
 
@@ -31,7 +33,7 @@ void Game::render_game() {
 	d3d.Device()->BeginScene();
 
 
-	en.render(d3d, t);
+	p.render(d3d, t);
 
 	d3d.Device()->EndScene();
 
@@ -42,13 +44,19 @@ void Game::render_game() {
 void Game::update_game(float dt) {
 	// Do nothing
 
-	en.update(dt);
+	if(di.key_down(DIK_ESCAPE)) {
+		PostQuitMessage(0);
+
+		OutputDebugString("Hello World\n");
+	}
+
+	p.update(dt);
 
 }
 
 void Game::release_game() {
 
-	en.release();
+	p.release();
 	t.release();
 
 }

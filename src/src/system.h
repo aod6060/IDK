@@ -17,6 +17,7 @@
 #include "CustomVertex.h"
 #include "Entity.h"
 #include "Texture.h"
+#include "DirectInput.h"
 
 /*
 	This is a wrapper for the window, direct3d9, and directinput8. I debating for sound fx I should use OpenAL or DirectSound just to
@@ -32,6 +33,7 @@ protected:
 	int cmd;
 
 	Direct3D d3d;
+	DirectInput di;
 
 	void init_window();
 public:

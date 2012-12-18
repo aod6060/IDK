@@ -28,6 +28,8 @@ void System::init(std::string cap, int width, int height, HINSTANCE hin, int cmd
 
 	this->d3d.init(*this);
 
+	this->di.init(*this);
+
 	this->init_game();
 }
 
@@ -56,6 +58,8 @@ void System::loop() {
 			QueryPerformanceCounter((LARGE_INTEGER*)&cts);
 			float dt = (cts - pts) * spc;
 
+			di.update();
+
 			this->update_game(dt);
 
 			this->render_game();
@@ -70,6 +74,8 @@ void System::loop() {
 
 void System::release() {
 	this->release_game();
+
+	di.release();
 
 	this->d3d.release();
 

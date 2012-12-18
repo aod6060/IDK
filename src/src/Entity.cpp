@@ -20,6 +20,8 @@ void Entity::init(Direct3D& d3d) {
 
 void Entity::release() {
 
+	this->release_ext();
+
 	if(mVB) {
 		mVB->Release();
 		mVB = 0;

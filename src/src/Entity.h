@@ -39,6 +39,8 @@ public:
 
 	virtual void init_buffer() {}
 
+	virtual void release_ext() {}
+
 	void create_buffer(Direct3D& d3d);
 
 	void update_buffer();

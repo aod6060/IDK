@@ -2,10 +2,11 @@
 #define GAME_H
 
 #include "system.h"
+#include "player.h"
 
 class Game : public System {
 
-	Entity en;
+	Player p;
 
 	Texture t;
 
