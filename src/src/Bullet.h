@@ -3,7 +3,9 @@
 
 
 #include "system.h"
+
 class Player;
+struct EnemyInfo;
 
 struct BulletInfo {
 	D3DXVECTOR3 pos;
@@ -30,6 +32,7 @@ public:
 
 	void release();
 
+	void check_enemys(std::vector<EnemyInfo>& en);
 };
 
 #endif

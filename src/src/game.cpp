@@ -5,7 +5,6 @@ void Game::init_game() {
 	
 	D3DXMATRIX P, V;
 
-
 	D3DXMatrixOrthoOffCenterLH(&P, 0, this->Width(), this->Height(), 0, -1.0f, 1.0f);
 
 	D3DXMatrixIdentity(&V);
@@ -26,6 +25,10 @@ void Game::init_game() {
 	t.init(d3d, "data/player.jpg");
 
 	b.init(d3d);
+
+	ens.init(d3d);
+
+	ens.Player(&p);
 }
 
 void Game::render_game() {
@@ -35,6 +38,8 @@ void Game::render_game() {
 
 
 	p.render(d3d, t);
+
+	ens.render(d3d);
 
 	b.render(d3d);
 
@@ -56,12 +61,20 @@ void Game::update_game(float dt) {
 	p.update(dt);
 
 	b.update(di, dt, p);
+
+	ens.update(dt);
+
+	ens.check_bullets(b);
 }
 
 void Game::release_game() {
 
+	ens.release();
+
 	b.release();
+	
 	p.release();
+	
 	t.release();
 
 }

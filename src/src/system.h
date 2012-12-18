@@ -18,6 +18,7 @@
 #include "Entity.h"
 #include "Texture.h"
 #include "DirectInput.h"
+#include "Rect.h"
 
 /*
 	This is a wrapper for the window, direct3d9, and directinput8. I debating for sound fx I should use OpenAL or DirectSound just to

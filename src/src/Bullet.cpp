@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "player.h"
+#include "Enemy.h"
 
 void Bullet::init(Direct3D& d3d) {
 	this->tex.init(d3d, "data/bullet.png");
@@ -67,4 +68,30 @@ void Bullet::update(DirectInput& di, float dt, Player& p) {
 void Bullet::release() {
 	tex.release();
 	en.release();
+}
+
+void Bullet::check_enemys(std::vector<EnemyInfo>& en) {
+
+	for(unsigned int i = 0; i < en.size(); i++) {
+
+		Rect er(en[i].pos, D3DXVECTOR3(32.0f, 48.0f, 0.0f));
+
+
+		std::vector<BulletInfo>::iterator j = this->bts.begin();
+
+		while(j != bts.end()) {
+
+			Rect br(j->pos, D3DXVECTOR3(32.0f, 32.0f, 0.0f));
+
+
+			if(er == br) {
+				j = bts.erase(j);
+				en[i].reset();
+				break;
+			}
+
+
+			j++;
+		}
+	}
 }

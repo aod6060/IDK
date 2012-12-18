@@ -4,7 +4,7 @@
 #include "system.h"
 #include "player.h"
 #include "Bullet.h"
-
+#include "Enemy.h"
 
 class Game : public System {
 
@@ -13,6 +13,8 @@ class Game : public System {
 	Texture t;
 
 	Bullet b;
+
+	Enemys ens;
 public:
 
 	virtual void init_game();
