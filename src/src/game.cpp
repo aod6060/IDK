@@ -25,6 +25,7 @@ void Game::init_game() {
 
 	t.init(d3d, "data/player.jpg");
 
+	b.init(d3d);
 }
 
 void Game::render_game() {
@@ -34,6 +35,8 @@ void Game::render_game() {
 
 
 	p.render(d3d, t);
+
+	b.render(d3d);
 
 	d3d.Device()->EndScene();
 
@@ -52,10 +55,12 @@ void Game::update_game(float dt) {
 
 	p.update(dt);
 
+	b.update(di, dt, p);
 }
 
 void Game::release_game() {
 
+	b.release();
 	p.release();
 	t.release();
 

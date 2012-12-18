@@ -3,6 +3,8 @@
 
 #include "system.h"
 #include "player.h"
+#include "Bullet.h"
+
 
 class Game : public System {
 
@@ -10,6 +12,7 @@ class Game : public System {
 
 	Texture t;
 
+	Bullet b;
 public:
 
 	virtual void init_game();

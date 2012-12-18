@@ -68,6 +68,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -78,6 +79,7 @@
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="CustomVertex.h" />
     <ClInclude Include="Direct3D.h" />
     <ClInclude Include="DirectInput.h" />
