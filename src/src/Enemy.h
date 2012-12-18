@@ -9,6 +9,10 @@ class Player;
 struct EnemyInfo {
 	D3DXVECTOR3 pos;
 
+	int life;
+
+	int etype;
+
 	void reset();
 };
 
@@ -17,7 +21,7 @@ class Enemys {
 
 	Entity en;
 
-	Texture tex;
+	Texture tex[3];
 
 	Player* p;
 

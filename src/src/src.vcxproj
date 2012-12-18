@@ -80,6 +80,7 @@
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Blood.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CustomVertex.h" />
     <ClInclude Include="Direct3D.h" />

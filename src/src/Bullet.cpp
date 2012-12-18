@@ -86,10 +86,17 @@ void Bullet::check_enemys(std::vector<EnemyInfo>& en) {
 
 			if(er == br) {
 				j = bts.erase(j);
-				en[i].reset();
-				break;
-			}
 
+				if(en[i].life <= 0) {
+
+					en[i].reset();
+					break;
+
+				} else {
+					en[i].life--;
+					break;
+				}
+			}
 
 			j++;
 		}

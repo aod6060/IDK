@@ -25,10 +25,17 @@ void EnemyInfo::reset() {
 	}
 
 	pos.z = 0.0f;
+
+	life = rand()%3;
+
+	this->etype = life;
 }
 
 void Enemys::init(Direct3D& d3d) {
-	tex.init(d3d, "data/enemy.png");
+	tex[0].init(d3d, "data/enemy.png");
+	tex[1].init(d3d, "data/enemy2.png");
+	tex[2].init(d3d, "data/enemy3.png");
+
 	en.init(d3d);
 
 	en.Size(D3DXVECTOR3(32.0f, 48.0f, 0.0f));
@@ -53,7 +60,7 @@ void Enemys::render(Direct3D& d3d) {
 
 		en.Pos(i->pos);
 
-		en.render(d3d, tex);
+		en.render(d3d, tex[i->etype]);
 
 		i++;
 	}
@@ -87,7 +94,9 @@ void Enemys::update(float dt) {
 }
 
 void Enemys::release() {
-	tex.release();
+	tex[0].release();
+	tex[1].release();
+	tex[2].release();
 	en.release();
 	einfo.clear();
 }
