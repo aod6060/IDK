@@ -6,6 +6,8 @@
 
 class Player;
 struct EnemyInfo;
+class BloodDecal;
+class Camera;
 
 struct BulletInfo {
 	D3DXVECTOR3 pos;
@@ -22,7 +24,12 @@ class Bullet {
 
 	float fireDelay;
 
+	BloodDecal* bd;
 public:
+
+	Bullet() : bd(0) {}
+
+	virtual ~Bullet() { bd = 0; }
 
 	void init(Direct3D& d3d);
 
@@ -32,7 +39,10 @@ public:
 
 	void release();
 
-	void check_enemys(std::vector<EnemyInfo>& en);
+	void check_enemys(std::vector<EnemyInfo>& en, Camera& cam);
+
+	void BD(BloodDecal* bd) { this->bd = bd; }
+
 };
 
 #endif

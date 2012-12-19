@@ -5,6 +5,8 @@
 #include "player.h"
 #include "Bullet.h"
 #include "Enemy.h"
+#include "Blood.h"
+#include "Camera.h"
 
 class Game : public System {
 
@@ -15,6 +17,11 @@ class Game : public System {
 	Bullet b;
 
 	Enemys ens;
+
+	BloodDecal bd;
+
+	Camera cam;
+
 public:
 
 	virtual void init_game();

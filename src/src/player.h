@@ -3,9 +3,13 @@
 
 #include "system.h"
 
+class Camera;
+
 class Player : public Entity {
 
 	DirectInput* pInput;
+
+	Camera* cam;
 
 public:
 
@@ -18,7 +22,7 @@ public:
 
 	int diag;
 
-	Player() : face(Player::PF_LEFT) {}
+	Player() : face(Player::PF_LEFT), cam(0) {}
 	
 	void Input(DirectInput* in) { this->pInput = in; }
 
@@ -26,6 +30,10 @@ public:
 
 	virtual void release_ext();
 
+
+	void Cam(Camera* cam) { this->cam = cam; }
+
+	Camera* Cam() { return this->cam; }
 };
 
 #endif

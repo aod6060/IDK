@@ -1,4 +1,5 @@
 #include "player.h"
+#include "Camera.h"
 
 void Player::update(float dt) {
 
@@ -19,8 +20,14 @@ void Player::update(float dt) {
 		pos.y += 128.0f * dt;
 		face = Player::PF_DOWN;
 	}
+
+
+	if(cam) {
+		cam->Pos(pos);
+	}
 }
 
 void Player::release_ext() {
 	this->pInput = 0;
+	this->cam = 0;
 }

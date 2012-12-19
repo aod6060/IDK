@@ -5,6 +5,7 @@
 
 class Bullet;
 class Player;
+class Camera;
 
 struct EnemyInfo {
 	D3DXVECTOR3 pos;
@@ -35,12 +36,11 @@ public:
 
 	void release();
 
-	virtual void release_ext() { p = 0; }
+	virtual void release_ext() { p = 0;}
 
-	void check_bullets(Bullet& b);
+	void check_bullets(Bullet& b, Camera& cam);
 
 	void Player(Player* p) { this->p = p; }
-
 };
 
 #endif

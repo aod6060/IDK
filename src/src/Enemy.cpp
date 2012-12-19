@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "player.h"
+#include "Camera.h"
 
 void EnemyInfo::reset() {
 	pos.x = float(rand()%640);
@@ -101,6 +102,6 @@ void Enemys::release() {
 	einfo.clear();
 }
 
-void Enemys::check_bullets(Bullet& b) {
-	b.check_enemys(this->einfo);
+void Enemys::check_bullets(Bullet& b, Camera& cam) {
+	b.check_enemys(this->einfo, cam);
 }

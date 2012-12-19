@@ -1,6 +1,8 @@
 #include "Bullet.h"
 #include "player.h"
 #include "Enemy.h"
+#include "Blood.h"
+#include "Camera.h"
 
 void Bullet::init(Direct3D& d3d) {
 	this->tex.init(d3d, "data/bullet.png");
@@ -29,7 +31,7 @@ void Bullet::update(DirectInput& di, float dt, Player& p) {
 
 	fireDelay += dt;
 
-	if(di.key_down(DIK_Z) && fireDelay > 0.2f) {
+	if(di.key_down(DIK_Z) && fireDelay > 0.1f) {
 		BulletInfo temp;
 
 		temp.pos = p.Pos();
@@ -70,7 +72,7 @@ void Bullet::release() {
 	en.release();
 }
 
-void Bullet::check_enemys(std::vector<EnemyInfo>& en) {
+void Bullet::check_enemys(std::vector<EnemyInfo>& en, Camera& cam) {
 
 	for(unsigned int i = 0; i < en.size(); i++) {
 
@@ -85,6 +87,32 @@ void Bullet::check_enemys(std::vector<EnemyInfo>& en) {
 
 
 			if(er == br) {
+				if(j->vel.x < 0) {
+					D3DXVECTOR3 pos(-64.0f, 8.0f, 0.0f);
+					pos = pos + j->pos;
+					if(this->bd) {
+						bd->addBlood(pos);
+					}
+				} else if(j->vel.x > 0) {
+					D3DXVECTOR3 pos(64.0f, 8.0f, 0.0f);
+					pos = pos + j->pos;
+					if(this->bd) {
+						bd->addBlood(pos);
+					}
+				} else if(j->vel.y < 0) {
+					D3DXVECTOR3 pos(0.0f, -64.0f, 0.0f);
+					pos = pos + j->pos;
+					if(this->bd) {
+						bd->addBlood(pos);
+					}
+				} else if(j->vel.y > 0) {
+					D3DXVECTOR3 pos(0.0f, 64.0f, 0.0f);
+					pos = pos + j->pos;
+					if(this->bd) {
+						bd->addBlood(pos);
+					}
+				}
+
 				j = bts.erase(j);
 
 				if(en[i].life <= 0) {
