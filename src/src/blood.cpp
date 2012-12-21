@@ -32,7 +32,7 @@ void BloodDecal::update(float dt) {
 
 		i->life += dt;
 
-		if(i->life >= 100.0f) {
+		if(i->life >= 50.0f) {
 			i = binfo.erase(i);
 		} else {
 			i++;

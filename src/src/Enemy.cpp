@@ -3,33 +3,42 @@
 #include "player.h"
 #include "Camera.h"
 
-void EnemyInfo::reset() {
-	pos.x = float(rand()%640);
-	pos.y = float(rand()%480);
+void EnemyInfo::reset(D3DXVECTOR3 off) {
+	pos.x = float(rand()%640) + off.x;
+	pos.y = float(rand()%480) + off.y;
 
-	if(pos.x < 320.0f) {
+	/*
+	if(pos.x < 320.0f+off.x) {
 		pos.x -= 320.0f;
 
 		pos.x -= 32.0f + float(rand()%64);
-	} else if(pos.x >= 320.0f) {
+	} else if(pos.x >= 320.0f+off.x) {
 		pos.x += 320.0f;
 
 		pos.x += 32.0f + float(rand()%64);
 	}
 	
-	if(pos.y < 240.0f) {
+	if(pos.y < 240.0f + off.y) {
 		pos.y -= 240.0f;
 		pos.y -= 48.0f + float(rand()%64);
-	} else if(pos.y >= 240.0f) {
+	} else if(pos.y >= 240.0f + off.y) {
 		pos.y += 240.0f;
 		pos.y += 48.0f + float(rand()%64);
 	}
-
+	*/
 	pos.z = 0.0f;
 
 	life = rand()%3;
 
 	this->etype = life;
+
+	if(this->etype == 0) {
+		this->speed = 64.0f;
+	} else if(this->etype == 1) {
+		this->speed = 32.0f;
+	} else if(this->etype == 2) {
+		this->speed = 16.0f;
+	}
 }
 
 void Enemys::init(Direct3D& d3d) {
@@ -46,7 +55,7 @@ void Enemys::init(Direct3D& d3d) {
 	for(int i = 0; i < 20; i++) {
 		EnemyInfo temp;
 
-		temp.reset();
+		temp.reset(D3DXVECTOR3(0, 0, 0));
 
 		//temp.pos = D3DXVECTOR3(0, 0, 0);
 
@@ -78,16 +87,16 @@ void Enemys::update(float dt) {
 		D3DXVECTOR3 p_pos = p->Pos();
 
 		if(i->pos.x < p_pos.x) {
-			i->pos.x += 16.0f * dt;
+			i->pos.x += i->speed * dt;
 		} else if(i->pos.x > p_pos.x) {
-			i->pos.x -= 16.0f * dt;
+			i->pos.x -= i->speed * dt;
 		}
 
 
 		if(i->pos.y < p_pos.y) {
-			i->pos.y += 16.0f * dt;
+			i->pos.y += i->speed * dt;
 		} else if(i->pos.y > p_pos.y) {
-			i->pos.y -= 16.0f * dt;
+			i->pos.y -= i->speed * dt;
 		}
 
 		i++;

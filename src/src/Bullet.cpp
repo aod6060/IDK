@@ -117,7 +117,7 @@ void Bullet::check_enemys(std::vector<EnemyInfo>& en, Camera& cam) {
 
 				if(en[i].life <= 0) {
 
-					en[i].reset();
+					en[i].reset(cam.Pos());
 					break;
 
 				} else {

@@ -14,7 +14,9 @@ struct EnemyInfo {
 
 	int etype;
 
-	void reset();
+	void reset(D3DXVECTOR3 off);
+
+	float speed;
 };
 
 class Enemys {
