@@ -93,6 +93,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="health.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="system.h" />
