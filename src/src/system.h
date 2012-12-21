@@ -24,6 +24,9 @@
 	This is a wrapper for the window, direct3d9, and directinput8. I debating for sound fx I should use OpenAL or DirectSound just to
 	keep it with in the same style
 */
+
+#define FlToDw(f) (*((DWORD*)&f))
+
 class System {
 protected:
 	HWND mHwnd;
