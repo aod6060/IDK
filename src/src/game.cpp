@@ -41,6 +41,8 @@ void Game::init_game() {
 
 	p.Cam(&cam);
 
+	ps.init(d3d);
+
 }
 
 void Game::render_game() {
@@ -58,6 +60,8 @@ void Game::render_game() {
 
 	b.render(d3d);
 
+	ps.render(d3d);
+
 	d3d.Device()->EndScene();
 
 	d3d.Device()->Present(0, 0, 0, 0);
@@ -73,18 +77,29 @@ void Game::update_game(float dt) {
 		OutputDebugString("Hello World\n");
 	}
 
+
+	if(di.key_down(DIK_X)) {
+		ps.addParticle(D3DXVECTOR2(0, 0), D3DXVECTOR2(8.0f, 8.0f), 10.0f);
+
+		//OutputDebugString("Hello World");
+	}
+
 	bd.update(dt);
 
 	p.update(dt);
 
 	b.update(di, dt, p);
 
-	ens.update(dt);
+	//ens.update(dt);
 
 	ens.check_bullets(b, cam);
+
+	ps.update(dt);
 }
 
 void Game::release_game() {
+
+	ps.release();
 
 	bd.release();
 

@@ -78,6 +78,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="health.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="system.cpp" />
     <ClCompile Include="Texture.cpp" />

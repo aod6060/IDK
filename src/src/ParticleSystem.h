@@ -8,25 +8,31 @@ struct Particle {
 	D3DXVECTOR2 pos;
 	D3DXVECTOR2 vel;
 	D3DXVECTOR2 acc;
-
-	float time;
-
-	D3DXVECTOR3 origion;
 };
 
 struct ParticleVertex {
 	D3DXVECTOR3 xyz;
+	DWORD dif;
 };
 
-#define PARTICLE_FVF (D3DFVF_XYZ)
+#define PARTICLE_FVF (D3DFVF_XYZ | D3DFVF_DIFFUSE)
 
 class ParticleSystem {
 
-	std::vector<Particle> particles;
+	Particle* parts;
 
-	IDirect3DVertexBuffer9* vb; // this will hold 1000 particles
-	// in total.
+	IDirect3DVertexBuffer9* vb;
 
+	int num;
+public:
+
+	void init(Direct3D& d3d, int num);
+
+	void render(Direct3D& d3d);
+
+	void update(float dt);
+
+	void release();
 
 };
 

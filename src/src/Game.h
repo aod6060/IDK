@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Blood.h"
 #include "Camera.h"
+#include "ParticleSystem.h"
 
 class Game : public System {
 
@@ -21,6 +22,8 @@ class Game : public System {
 	BloodDecal bd;
 
 	Camera cam;
+
+	ParticleSystem ps;
 
 public:
 
